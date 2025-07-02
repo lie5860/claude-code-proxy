@@ -27,5 +27,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKOCKERHUB_USERNAME }}/claude-code-proxy:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/claude-code-proxy:latest
 
