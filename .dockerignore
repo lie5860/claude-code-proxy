@@ -1,0 +1,37 @@
+# Git
+.git
+.gitignore
+
+# IDE / Editor
+.idea/
+*.swp
+*.swo
+*.pyc
+
+# Python cache
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env
+
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# Local configs
+local_settings.py
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
