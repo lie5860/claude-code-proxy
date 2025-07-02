@@ -83,14 +83,6 @@ async def create_message(request: ClaudeMessagesRequest, http_request: Request):
             claude_response = convert_openai_to_claude_response(
                 openai_response, request
             )
-            # Check minimum tokens limit
-            if "usage" in claude_response and "output_tokens" in claude_response["usage"]:
-                output_tokens = claude_response["usage"]["output_tokens"]
-                if output_tokens < config.min_tokens_limit:
-                    raise HTTPException(
-                        status_code=400,
-                        detail=f"Output tokens ({output_tokens}) is less than minimum limit ({config.min_tokens_limit}))",
-                    )
             return claude_response
     except HTTPException:
         raise
