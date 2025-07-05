@@ -1,10 +1,17 @@
-FROM ghcr.io/astral-sh/uv:bookworm-slim
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-# Copy the project into the image
-ADD . /app
-
-# Sync the project into a new environment, asserting the lockfile is up to date
+# Set the working directory in the container
 WORKDIR /app
-RUN uv sync --locked
 
-CMD ["uv", "run", "start_proxy.py"]
+# Copy the requirements file into the container at /app
+COPY requirements.txt .
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application's code from the host to the container at /app
+COPY . .
+
+# Run start_proxy.py when the container launches
+CMD ["python", "start_proxy.py"]
